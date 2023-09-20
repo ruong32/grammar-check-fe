@@ -1,0 +1,16 @@
+{
+    "customModePlaceholder": "Hãy viết mong muốn của bạn để tùy chỉnh ý tưởng với mô hình AI mới nhất... (hoặc chọn các lựa chọn được gợi ý bên dưới)",
+    "paraphrase": "Diễn giải",
+    "standard": "Tiêu chuẩn",
+    "simple": "Đơn giản",
+    "fluency": "Trôi chảy",
+    "creative": "Sáng tạo",
+    "formal": "Trang trọng",
+    "casual": "Đời thường",
+    "acadamic": "Học thuật",
+    "expand": "Mở rộng",
+    "shorten": "Thu gọn",
+    "synonym": "Từ đồng nghĩa",
+    "inputPlaceholder": "Nhập hoặc dán (Ctrl+V) nội dung của bạn ở đây",
+    "resultPlaceholder": "Kết quả sẽ được hiển thị ở đây"
+}

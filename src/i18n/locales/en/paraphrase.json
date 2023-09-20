@@ -1,0 +1,16 @@
+{
+    "customModePlaceholder": "Write your mind to customize your idea with latest AI models... (or choose suggested options below)",
+    "paraphrase": "Paraphrase",
+    "standard": "Standard",
+    "simple": "Simple",
+    "fluency": "Fluency",
+    "creative": "Creative",
+    "formal": "Formal",
+    "casual": "Casual",
+    "acadamic": "Acadamic",
+    "expand": "Expand",
+    "shorten": "Shorten",
+    "synonym": "Synonym",
+    "inputPlaceholder": "Type or Paste (Ctrl+V) your content here",
+    "resultPlaceholder": "Result will be displayed here"
+}
