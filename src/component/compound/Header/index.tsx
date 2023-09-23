@@ -12,6 +12,10 @@ const LanguageChanger = dynamic(() => import('../LanguageChanger'), {
     ssr: false
 })
 
+const ThemeChanger = dynamic(() => import('../ThemeChanger'), {
+    ssr: false
+})
+
 const Header = () => {
     const [t] = useI18nServer('header')
     const LinkItem = ({href = '', name = ''}) => {
@@ -28,7 +32,7 @@ const Header = () => {
         <div
             className={cx(
                 'fixed top-0 w-full mx-auto bg-slate-100 z-10',
-                // 'dark:bg-gray-900'
+                'dark:bg-gray-900'
             )}
         >
             <Container
@@ -43,7 +47,8 @@ const Header = () => {
                         <LinkItem href='/' name={t('paraphrase')}/>
                         {/* <LinkItem href='/analyzer' name={t('analyzer')}/> */}
                     </div>
-                    <LanguageChanger className="mr-4 lg:mr-0 lg:ml-12"/>
+                    <LanguageChanger className="mr-4 lg:ml-12"/>
+                    <ThemeChanger className="mr-4 lg:mr-0"/>
                     <MenuButton/>
                 </div>
             </Container>

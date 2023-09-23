@@ -23,6 +23,7 @@ const Slider = ({className, hideThumb, trackClassName, rangeClassName, thumbClas
 			<PrimitiveSlider.Track
 				className={cx(
 					'bg-gray-100 relative grow-1 h-[.25rem] w-full rounded-full',
+					'dark:bg-slate-600',
 					trackClassName
 				)}
 			>
@@ -38,6 +39,7 @@ const Slider = ({className, hideThumb, trackClassName, rangeClassName, thumbClas
 				<PrimitiveSlider.Thumb 
 					className={cx(
 						'block h-[1.25rem] w-[1.25rem] bg-white border-1 rounded-full shadow-[0_0_0.1875rem_#00000060]',
+						'dark:bg-gray-200',
 						'focus:outline-none',
 						thumbClassName
 					)}

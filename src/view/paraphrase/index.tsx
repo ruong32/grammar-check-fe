@@ -21,6 +21,9 @@ const HomeView = () => {
 	const [currentMode, setCurrentMode] = useState<typeof SUGGESTED_MODES[number]>('standard')
 	const [customMode, setCustomMode] = useState<string>('')
 	const [synonymList, setSynonymList] = useState<SynonymData[]>([])
+	const [disableCustomMode, setDisableCustomMode] = useState<boolean>(false)
+
+	const canUseCustomMode = () => !disableCustomMode && customMode.length > 0
 
 	const renderModeSuggestion = () => {
 		const selectedModeStyle = "font-semibold border-b-2 border-green-500"
@@ -28,10 +31,11 @@ const HomeView = () => {
 			<span
 				key={mode}
 				onClick={() => {
+					setDisableCustomMode(true)
 					setCurrentMode(mode)
 				}}
 				className={cx(
-					!customMode && mode === currentMode ? selectedModeStyle : null,
+					!canUseCustomMode() && mode === currentMode ? selectedModeStyle : null,
 					"cursor-pointer"
 				)}
 			>
@@ -42,7 +46,7 @@ const HomeView = () => {
 
 	const submit = async () => {
 		setIsProcessing(true)
-		const [paraphraseResult] = await (customMode ?
+		const [paraphraseResult] = await (canUseCustomMode() ?
 			customParaphrase({
 				data: input,
 				type_content: customMode,
@@ -144,6 +148,8 @@ const HomeView = () => {
 						placeholder={t('customModePlaceholder')}
 						value={customMode}
 						onChange={e => { setCustomMode(e.currentTarget.value) }}
+						onClick={() => setDisableCustomMode(false)}
+						disable={disableCustomMode}
 					/>
 					<Button className="rounded-l-none text-white" color='green' onClick={submit}>{t('paraphrase')}</Button>
 				</div>
@@ -167,7 +173,7 @@ const HomeView = () => {
 				<div className="flex gap-6 [&>*]:flex-1">
 					<TextArea
 						id="paraphrase-input-field"
-						className="h-[40vh] p-2 rounded-lg text-sm"
+						className="min-h-[40vh] p-2 rounded-lg text-sm"
 						placeholder={t('inputPlaceholder')}
 						onInput={e => {
 							setInput(e.currentTarget.innerText)
@@ -176,7 +182,7 @@ const HomeView = () => {
 					<TextArea
 						id="paraphrase-result-field"
 						placeholder={t('resultPlaceholder')}
-						className="h-[40vh] p-2 rounded-lg text-sm"
+						className="min-h-[40vh] p-2 rounded-lg text-sm"
 					/>
 				</div>
 			</div>

@@ -1,4 +1,7 @@
 {
     "editorPlaceholder": "Nhập đoạn văn bản của bạn",
-    "zoom": "Phóng to"
+    "zoom": "Phóng to",
+    "changeTo": "Chuyển sang",
+    "dark": "chế độ tối",
+    "light": "chế độ sáng"
 }

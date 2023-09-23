@@ -4,7 +4,7 @@
 
 * {
   box-sizing: border-box;
-  cursor: default;
+  cursor: inherit;
   transition: background-color .2s, border-color .2s;
 }
 
@@ -68,4 +68,15 @@ progress[value]::-webkit-progress-value {
 
 input::placeholder {
   color: var(--color-gray-400);
+}
+
+.dark [contenteditable=true]:empty:before{
+  content: attr(placeholder);
+  pointer-events: none;
+  color: var(--color-gray-200);
+  display: block;
+}
+
+.dark input::placeholder {
+  color: var(--color-gray-200);
 }

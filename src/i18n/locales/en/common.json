@@ -1,4 +1,7 @@
 {
     "editorPlaceholder": "Type your paragraph",
-    "zoom": "Zoom"
+    "zoom": "Zoom",
+    "changeTo": "Change to",
+    "dark": "dark mode",
+    "light": "light mode"
 }
