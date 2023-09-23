@@ -36,10 +36,11 @@ const Zoom = (props: ZoomProps) => {
 	}
 
 	return (
-		<div className={cx('relative text-gray-700 text-[14px] leading-[20px]', props.className)}>
+		<div className={cx('relative text-[14px] leading-[20px]', props.className)}>
 			<div 
 				className={cx(
 					"flex items-center p-[8px] rounded-lg bg-slate-300 transition-[filter]",
+					"dark:bg-slate-700",
 					"hover:cursor-pointer hover:brightness-95"
 				)}
 				onClick={() => setOpen(!open)}
@@ -49,6 +50,7 @@ const Zoom = (props: ZoomProps) => {
 			<div 
 				className={cx(
 					"absolute w-full bottom-full pt-[8px] pb-[8px] mb-[4px] bg-slate-300 rounded-md opacity-0 invisible pointer-events-none transition-opacity duration-300",
+					'dark:bg-slate-700',
 					open ? "opacity-100 visible pointer-events-auto" : ""
 				)}
 			>
@@ -58,6 +60,7 @@ const Zoom = (props: ZoomProps) => {
 							key={option}
 							className={cx(
 								"pt-[4px] pb-[4px] pl-[8px] pr-[8px] bg-slate-300 flex justify-between",
+								'dark:bg-slate-700',
 								"hover:cursor-pointer hover:brightness-95"
 							)}
 							onClick={() => onOptionClick(option)}

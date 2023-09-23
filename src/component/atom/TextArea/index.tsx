@@ -17,8 +17,10 @@ const TextArea = forwardRef<HTMLDivElement, TextAreaProps>(({ className, id, ...
                 ref={ref}
                 id={textAreaId}
                 className={cx(
-                    'scrollbar h-[40vh] bg-white overflow-y-auto resize-y whitespace-pre-line w-full p-2 rounded-lg text-sm outline-transparent transition-[outline] duration-[250ms]',
+                    'scrollbar bg-white overflow-y-auto resize-y whitespace-pre-line w-full p-2 rounded-lg text-sm outline-transparent transition-[outline] duration-[250ms]',
+				    'dark:bg-gray-500',
                     'focus:outline-green-500',
+                    className
                 )} 
                 {...props}
                 onPaste={e => {

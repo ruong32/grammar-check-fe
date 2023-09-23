@@ -13,9 +13,11 @@ const CopyButton = ({ targetId }: CopyButtonProps) => {
         <div 
             className={cx(
                 "bg-white rounded-md p-1 cursor-pointer",
+                "dark:bg-slate-700",
                 "[&_*]:cursor-pointer",
                 "hover:bg-gray-100",
-                "active:bg-green-500 active:text-white",
+                "active:bg-sky-500 active:text-white",
+                "dark:active:bg-sky-500 dark:active:text-white",
             )}
             onClick={() => {
                 const target = document.getElementById(targetId)

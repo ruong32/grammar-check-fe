@@ -3,7 +3,7 @@ import axios, { AxiosRequestConfig } from "axios"
 
 export const cx = twMerge
 
-export const isServerSide = () => typeof window === undefined
+export const isServerSide = () => typeof window === 'undefined'
 
 export const removeVietnameseTones = (str: string) => {
 	return str

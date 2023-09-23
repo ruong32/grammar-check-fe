@@ -12,9 +12,11 @@ const ClearButton = ({ targetId }: CopyButtonProps) => {
         <div 
             className={cx(
                 "bg-white rounded-md p-1 cursor-pointer",
+                "dark:bg-slate-700",
                 "[&_*]:cursor-pointer",
                 "hover:bg-gray-100",
                 "active:bg-red-500 active:text-white",
+                "dark:active:bg-red-500 dark:active:text-white",
             )}
             onClick={() => {
                 const target = document.getElementById(targetId)
