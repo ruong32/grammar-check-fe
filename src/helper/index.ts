@@ -47,3 +47,10 @@ export const fetcher = async <T>(config: AxiosRequestConfig): Promise<[T, null] 
         return [null, error]
     }
 }
+
+export const px2Rem = (px: number) => {   
+	if (isServerSide()) {
+		return 0
+	}
+    return px / parseFloat(getComputedStyle(document.documentElement).fontSize);
+}

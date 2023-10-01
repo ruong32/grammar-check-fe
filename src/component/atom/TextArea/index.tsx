@@ -12,7 +12,7 @@ const TextArea = forwardRef<HTMLDivElement, TextAreaProps>(({ className, id, ...
         return id || useId()
     }, [])
     return (
-        <div className="relative h-fit flex [&>.toolbox]:hover:flex [&>.toolbox]:focus-within:flex">
+        <div className="relative h-full min-h-[inherit] flex [&>.toolbox]:hover:flex [&>.toolbox]:focus-within:flex">
             <div
                 ref={ref}
                 id={textAreaId}

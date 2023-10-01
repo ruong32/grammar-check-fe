@@ -3,5 +3,12 @@
     "zoom": "Zoom",
     "changeTo": "Change to",
     "dark": "dark mode",
-    "light": "light mode"
+    "light": "light mode",
+    "en-us": "English (US)",
+    "en-uk": "English (UK)",
+    "en-ca": "English (CA)",
+    "en-au": "English (AU)",
+    "vi": "Vietnamese",
+    "kr": "Korean",
+    "jp": "Japanese"
 }

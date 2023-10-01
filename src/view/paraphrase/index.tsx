@@ -4,13 +4,14 @@ import { useState, useEffect } from "react"
 import { Root, createRoot } from 'react-dom/client'
 import { paraphrase, customParaphrase, getSynonym } from "@/api"
 import { SUGGESTED_MODES } from "@/common"
-import { Button, Container, Input, Slider, TextArea } from "@/component/atom"
+import { Button, Container, Input, Resizable, Slider, TextArea } from "@/component/atom"
 import { Spinner } from "@/component/icon"
 import { cx } from "@/helper"
 import { useI18nClient } from "@/hook/useI18nClient"
 import Sentence from "./Sentence"
 import { SynonymData } from "@/types"
 import Synonym from "./Synonym"
+import AccentSelect from "./AccentSelect"
 
 const HomeView = () => {
 	const [t] = useI18nClient('paraphrase')
@@ -59,7 +60,7 @@ const HomeView = () => {
 			})
 		)
 		if (paraphraseResult?.result) {
-			const [synonymResult] = await getSynonym({data: paraphraseResult.result})
+			const [synonymResult] = await getSynonym({ data: paraphraseResult.result })
 			if (synonymResult?.synonym) {
 				setSynonymList(synonymResult.synonym)
 			} else {
@@ -76,7 +77,7 @@ const HomeView = () => {
 		if (!root) {
 			return
 		}
-		const sentences = paragraph.match( /[^\.!\?]+[\.!\?]+|[^\.!\?]+/g)
+		const sentences = paragraph.match(/[^\.!\?]+[\.!\?]+|[^\.!\?]+/g)
 		const sentenceElements = sentences?.map((sentence, index) => {
 			return <Sentence key={index} type={type} order={index}>{sentence}</Sentence>
 		})
@@ -87,26 +88,26 @@ const HomeView = () => {
 		if (!root) {
 			return
 		}
-		const sentences = paragraph.match( /[^\.!\?]+[\.!\?]+|[^\.!\?]+/g)
+		const sentences = paragraph.match(/[^\.!\?]+[\.!\?]+|[^\.!\?]+/g)
 		const sentenceElements = sentences?.map((sentence, index) => {
 			const words = sentence.match(/\w+|\s+|[^\s\w]+/g)
 			return (
-				<Sentence 
+				<Sentence
 					key={index}
 					type={type}
 					order={index}
 				>
 					{
-						words ? 
-						words.map((word, wordIndex) => {
-							const synonymIndex = synonyms.findIndex(item => Object.keys(item)[0] === word)
-							if (synonymIndex > -1) {
-								const synonym = synonyms.splice(synonymIndex, 1)[0]
-								return <Synonym key={`${word}-${index}-${wordIndex}`} synonym={synonym}/>
-							}
-							return word
-						}) :
-						sentence
+						words ?
+							words.map((word, wordIndex) => {
+								const synonymIndex = synonyms.findIndex(item => Object.keys(item)[0] === word)
+								if (synonymIndex > -1) {
+									const synonym = synonyms.splice(synonymIndex, 1)[0]
+									return <Synonym key={`${word}-${index}-${wordIndex}`} synonym={synonym} />
+								}
+								return word
+							}) :
+							sentence
 					}
 				</Sentence>
 			)
@@ -137,7 +138,7 @@ const HomeView = () => {
 			{isProcessing && (
 				<div className="absolute top-0 left-0 h-full w-full flex items-center justify-center text-gray-700 z-10">
 					<div className="flex bg-[#ffffff] p-2 rounded-lg">
-						<Spinner className="text-green-500 mr-2"/> Processing, please wait...
+						<Spinner className="text-green-500 mr-2" /> Processing, please wait...
 					</div>
 				</div>
 			)}
@@ -153,7 +154,7 @@ const HomeView = () => {
 					/>
 					<Button className="rounded-l-none text-white" color='green' onClick={submit}>{t('paraphrase')}</Button>
 				</div>
-				<div className="mt-3 mb-4 flex justify-between items-start flex-wrap">
+				<div className="mt-3 flex justify-between items-start flex-wrap">
 					<div className="flex flex-wrap [&>span]:mx-2 [&>span]:mb-2">
 						{
 							renderModeSuggestion()
@@ -170,21 +171,27 @@ const HomeView = () => {
 						/>
 					</div>
 				</div>
-				<div className="flex gap-6 [&>*]:flex-1">
-					<TextArea
-						id="paraphrase-input-field"
-						className="min-h-[40vh] p-2 rounded-lg text-sm"
-						placeholder={t('inputPlaceholder')}
-						onInput={e => {
-							setInput(e.currentTarget.innerText)
-						}}
-					/>
-					<TextArea
-						id="paraphrase-result-field"
-						placeholder={t('resultPlaceholder')}
-						className="min-h-[40vh] p-2 rounded-lg text-sm"
-					/>
-				</div>
+				<AccentSelect className="mt-4"/>
+				<Resizable 
+					className="my-2 min-h-[50vh]"
+					left={
+						<TextArea
+							id="paraphrase-input-field"
+							className="min-h-[50vh] p-2 rounded-lg text-sm"
+							placeholder={t('inputPlaceholder')}
+							onInput={e => {
+								setInput(e.currentTarget.innerText)
+							}}
+						/>
+					}
+					right={
+						<TextArea
+							id="paraphrase-result-field"
+							placeholder={t('resultPlaceholder')}
+							className="min-h-[50vh] p-2 rounded-lg text-sm"
+						/>
+					}
+				/>
 			</div>
 		</Container>
 	)

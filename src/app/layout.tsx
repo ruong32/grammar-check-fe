@@ -44,7 +44,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
         <main className='pt-[4.625rem]'>
           {children}
         </main>
-        <Zoom className='absolute right-[16px] bottom-[16px]'/>
+        <Zoom className='fixed right-[16px] bottom-[16px]'/>
       </body>
     </html>
   )

@@ -2,8 +2,9 @@
 
 import { useEffect, useState } from "react"
 import { cx } from "@/helper"
-import { Zoom as ZoomIcon } from "../icon"
+import { Check, Zoom as ZoomIcon } from "../icon"
 import { useI18nClient } from "@/hook/useI18nClient"
+import { STORAGE_KEY } from "@/common"
 
 type ZoomProps = {
 	className?: string
@@ -11,15 +12,13 @@ type ZoomProps = {
 
 const ZOOM_RATIO = [1, 1.25, 1.5] as const
 
-const STORAGE_KEY = 'zoomRatio'
-
 const Zoom = (props: ZoomProps) => {
 	const [t] = useI18nClient()
 	const [currentZoom, setCurrentZoom] = useState<typeof ZOOM_RATIO[number]>(1.5)
 	const [open, setOpen] = useState<boolean>(false)
 
 	useEffect(() => {
-		const storedRatio = parseFloat(localStorage.getItem(STORAGE_KEY) || '0') || currentZoom
+		const storedRatio = parseFloat(localStorage.getItem(STORAGE_KEY.ZOOM_RATIO) || '0') || currentZoom
 		if (ZOOM_RATIO.some(ratio => ratio === storedRatio)) {
 			setCurrentZoom(storedRatio as typeof ZOOM_RATIO[number]);
 		}
@@ -32,7 +31,7 @@ const Zoom = (props: ZoomProps) => {
 	const onOptionClick = (zoomRatio: typeof ZOOM_RATIO[number]) => {
 		setOpen(false)
 		setCurrentZoom(zoomRatio)
-		localStorage.setItem(STORAGE_KEY, String(zoomRatio))
+		localStorage.setItem(STORAGE_KEY.ZOOM_RATIO, String(zoomRatio))
 	}
 
 	return (
@@ -59,13 +58,13 @@ const Zoom = (props: ZoomProps) => {
 						<div
 							key={option}
 							className={cx(
-								"pt-[4px] pb-[4px] pl-[8px] pr-[8px] bg-slate-300 flex justify-between",
+								"pt-[4px] pb-[4px] pl-[8px] pr-[8px] bg-slate-300 flex justify-between items-center",
 								'dark:bg-slate-700',
 								"hover:cursor-pointer hover:brightness-95"
 							)}
 							onClick={() => onOptionClick(option)}
 						>
-							<span>{option}x</span>{option === currentZoom && <span className="text-green-600">&#10003;</span>}
+							<span>{option}x</span>{option === currentZoom && <Check className="text-green-600"height={18} width={18}/>}
 						</div>
 					))
 				}

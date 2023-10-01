@@ -10,6 +10,7 @@ export { default as Input } from './Input'
 export { default as Slider } from './Slider'
 export { default as TextArea } from './TextArea'
 export { default as Tooltip } from './Tooltip'
+export { default as Resizable } from './Resizable'
 
 const TextEditor = dynamic(() => import('./TextEditor'), {
     ssr: false

@@ -5,8 +5,8 @@ import { useState } from "react"
 import { Tooltip } from "../atom"
 import { Moon, Sun } from "../icon"
 import { useI18nClient } from "@/hook/useI18nClient"
+import { STORAGE_KEY } from "@/common"
 
-export const THEME_MODE_STORAGE_KEY = 'themeMode'
 export enum ThemeMode {dark = 'dark', light = 'light'}
 export const AVAILABLE_THEMES = {
     [ThemeMode.light]: {
@@ -31,7 +31,7 @@ type ThemeChangerProps = {
 
 const ThemeChanger = ({ className }: ThemeChangerProps) => {
 	const [t] = useI18nClient()
-    const [themeMode, setThemeMode] = useState<ThemeMode>((localStorage.getItem(THEME_MODE_STORAGE_KEY) || ThemeMode.light) as ThemeMode)
+    const [themeMode, setThemeMode] = useState<ThemeMode>((localStorage.getItem(STORAGE_KEY.THEME_MODE) || ThemeMode.light) as ThemeMode)
 
     return (
         <Tooltip
@@ -42,7 +42,7 @@ const ThemeChanger = ({ className }: ThemeChangerProps) => {
             )}
             onClick={() => {
                 setThemeMode(() => {
-                    localStorage.setItem(THEME_MODE_STORAGE_KEY, String(AVAILABLE_THEMES[themeMode].next))
+                    localStorage.setItem(STORAGE_KEY.THEME_MODE, String(AVAILABLE_THEMES[themeMode].next))
                     AVAILABLE_THEMES[themeMode].onNext()
                     return AVAILABLE_THEMES[themeMode].next
                 })

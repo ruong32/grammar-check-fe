@@ -3,5 +3,12 @@
     "zoom": "Phóng to",
     "changeTo": "Chuyển sang",
     "dark": "chế độ tối",
-    "light": "chế độ sáng"
+    "light": "chế độ sáng",
+    "en-us": "Anh Mỹ",
+    "en-uk": "Anh Anh",
+    "en-ca": "Anh Canada",
+    "en-au": "Anh Úc",
+    "vi": "Việt Nam",
+    "kr": "Hàn Quốc",
+    "jp": "Nhật Bản"
 }
