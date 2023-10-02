@@ -42,10 +42,6 @@ const Resizable = (props: ResizableProps) => {
 		}
 	}, [currentRatio])
 
-	// useEffect(() => {
-	// 	console.log(getComputedStyle(document.documentElement).fontSize)
-	// }, [document.documentElement.style.fontSize])
-
 	useEffect(() => {
 		const resize = (event: MouseEvent) => {
 			if (isResizing && containerRef.current) {
@@ -76,6 +72,14 @@ const Resizable = (props: ResizableProps) => {
 					"hover:scale-x-[2]"
 				)}
 				onMouseDown={() => setIsResizing(true)}
+				onClick={e => {
+					if (e.detail === 2) {
+						setCurrentRatio(0.5)
+						if (containerRef.current) {
+							setLeftWidth(0.5*containerRef.current.offsetWidth - 13)
+						}
+					}
+				}}
 			></div>
 			<div className="flex-1 min-w-[20%] min-h-[inherit]">
 				{props.right}
