@@ -136,8 +136,8 @@ const HomeView = () => {
 	return (
 		<Container className="relative">
 			{isProcessing && (
-				<div className="absolute top-0 left-0 h-full w-full flex items-center justify-center text-gray-700 z-10">
-					<div className="flex bg-[#ffffff] p-2 rounded-lg">
+				<div className="absolute top-0 left-0 h-full w-full flex items-center justify-center text-gray-700 z-10 dark:text-gray-50">
+					<div className="flex items-center bg-[#ffffff] px-4 py-2 rounded-lg dark:bg-gray-600">
 						<Spinner className="text-green-500 mr-2" /> Processing, please wait...
 					</div>
 				</div>

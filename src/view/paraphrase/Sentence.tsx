@@ -33,7 +33,7 @@ const Sentence = ({ type, order, children }: SentenceProps) => {
         <span 
             id={`${ID_PREFIX[type]}${order}`} 
             className={cx(
-                'data-[highlight]:bg-green-100'
+                'data-[highlight]:bg-green-500/30'
             )}
             onClick={onSentenceClick}
         >

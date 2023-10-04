@@ -40,7 +40,8 @@ const Synonym = ({ synonym }: SynonymProps) => {
 				<Popover.Content align='start' asChild>
 					<div
 						className={cx(
-							'absolute bg-white py-1 rounded-md rounded-tl-none max-h-32 w-max overflow-y-auto scrollbar text-gray-950 text-sm shadow-md',
+							'absolute bg-white py-1 rounded-md rounded-tl-none max-h-32 w-max overflow-y-auto scrollbar text-gray-950 text-sm shadow-[1px_1px_4px] shadow-gray-600',
+							'dark:bg-gray-900 dark:text-gray-50 dark:shadow-none'
 						)}
 					>
 						{
@@ -49,8 +50,8 @@ const Synonym = ({ synonym }: SynonymProps) => {
 									<div
 										key={option}
 										className={cx(
-											"px-1 bg-transparent cursor-pointer min-w-[5rem]",
-											"hover:bg-green-300"
+											"px-2 bg-transparent cursor-pointer min-w-[5rem]",
+											"hover:bg-green-300 dark:hover:bg-green-500"
 										)}
 										onClick={() => {
 											onSynonymOptionClick(option)
