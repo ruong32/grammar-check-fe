@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 import { Root, createRoot } from 'react-dom/client'
 import { paraphrase, customParaphrase, getSynonym } from "@/api"
 import { SUGGESTED_MODES } from "@/common"
@@ -21,8 +21,9 @@ const HomeView = () => {
 	const [synonym, setSynonym] = useState<number>(30)
 	const [currentMode, setCurrentMode] = useState<typeof SUGGESTED_MODES[number]>('standard')
 	const [customMode, setCustomMode] = useState<string>('')
-	const [synonymList, setSynonymList] = useState<SynonymData[]>([])
+	const synonyms = useRef<SynonymData[]>([])
 	const [disableCustomMode, setDisableCustomMode] = useState<boolean>(false)
+	const changedWords = useRef<string[]>([])
 
 	const canUseCustomMode = () => !disableCustomMode && customMode.length > 0
 
@@ -60,14 +61,13 @@ const HomeView = () => {
 			})
 		)
 		if (paraphraseResult?.result) {
+			changedWords.current = paraphraseResult.detail.map(([start, end]) => paraphraseResult.result.substring(start, end))
 			const [synonymResult] = await getSynonym({ data: paraphraseResult.result })
 			if (synonymResult?.synonym) {
-				setSynonymList(synonymResult.synonym)
+				synonyms.current = synonymResult.synonym
 			} else {
-				setSynonymList([])
+				synonyms.current = []
 			}
-		}
-		if (paraphraseResult?.result) {
 			setResult(paraphraseResult.result)
 		}
 		setIsProcessing(false)
@@ -84,7 +84,7 @@ const HomeView = () => {
 		root.render(sentenceElements)
 	}
 
-	const renderSentencesWithSynonyms = (root: Root | undefined, paragraph: string, synonyms: SynonymData[], type: 'input' | 'result') => {
+	const renderSentencesWithSynonyms = (root: Root | undefined, paragraph: string, changedWords: string[], synonyms: SynonymData[], type: 'input' | 'result') => {
 		if (!root) {
 			return
 		}
@@ -101,11 +101,21 @@ const HomeView = () => {
 						words ?
 							words.map((word, wordIndex) => {
 								const synonymIndex = synonyms.findIndex(item => Object.keys(item)[0] === word)
+								console.log(synonymIndex, word, synonyms)
+								const changedWordIndex = changedWords.indexOf(word)
+								if (changedWordIndex > -1 ) {
+									changedWords.splice(changedWordIndex, 1)
+								}
 								if (synonymIndex > -1) {
 									const synonym = synonyms.splice(synonymIndex, 1)[0]
-									return <Synonym key={`${word}-${index}-${wordIndex}`} synonym={synonym} />
+									return <Synonym key={`${word}-${index}-${wordIndex}`} isChangedWord={changedWordIndex > -1} synonym={synonym} />
 								}
-								return word
+								return (
+									<span 
+										key={`${word}-${index}-${wordIndex}`} 
+										className={cx(changedWordIndex > -1 ? "text-yellow-600 dark:bg-yellow-500" : "")}
+									>{word}</span>
+								)
 							}) :
 							sentence
 					}
@@ -126,7 +136,7 @@ const HomeView = () => {
 		const inputRoot = initRoot('paraphrase-input-field')
 		const resultRoot = initRoot('paraphrase-result-field')
 		renderSentences(inputRoot, input, 'input')
-		renderSentencesWithSynonyms(resultRoot, result, synonymList, 'result')
+		renderSentencesWithSynonyms(resultRoot, result, changedWords.current, synonyms.current, 'result')
 		return () => {
 			inputRoot?.unmount()
 			resultRoot?.unmount()

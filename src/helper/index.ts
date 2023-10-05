@@ -48,9 +48,10 @@ export const fetcher = async <T>(config: AxiosRequestConfig): Promise<[T, null] 
     }
 }
 
-export const px2Rem = (px: number) => {   
-	if (isServerSide()) {
-		return 0
+export const removeItemFromArray = <T> (arr: T[], item: T) => {
+	const index = arr.indexOf(item)
+	if (index > -1) {
+		return arr.splice(index, 1)
 	}
-    return px / parseFloat(getComputedStyle(document.documentElement).fontSize);
+	return arr
 }

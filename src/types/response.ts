@@ -8,3 +8,7 @@ export type GeneralReponse = {
 export type GetSynonymResponse = GeneralReponse & {
     synonym: SynonymData[]
 }
+
+export type ParaphraseResponse = GeneralReponse & {
+    detail: number[][]
+}

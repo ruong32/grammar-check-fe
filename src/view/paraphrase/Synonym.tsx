@@ -7,9 +7,10 @@ import * as Popover from '@radix-ui/react-popover'
 
 type SynonymProps = {
 	synonym: SynonymData
+	isChangedWord?: boolean
 }
 
-const Synonym = ({ synonym }: SynonymProps) => {
+const Synonym = ({ synonym, isChangedWord }: SynonymProps) => {
 	const [label, setLabel] = useState<string>(Object.keys(synonym)[0])
 	const [synonymOptions, setSynonymOptions] = useState<string[]>(Object.values(synonym)[0])
 
@@ -29,8 +30,9 @@ const Synonym = ({ synonym }: SynonymProps) => {
 			<Popover.Trigger asChild>
 				<span
 					className={cx(
+						isChangedWord ? 'text-yellow-600 dark:text-yellow-500' : '',
 						'relative cursor-pointer',
-						'hover:text-orange-500'
+						'hover:text-orange-500 dark:hover:text-orange-500'
 					)}
 				>
 					{label}
