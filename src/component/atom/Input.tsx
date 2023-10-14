@@ -23,7 +23,7 @@ const Input = ({ containerClassName, className, leftIcon, rightIcon, disable, ..
 					'py-2 px-4 w-full rounded-lg',
 					'focus:outline-none focus:border-none',
 					'dark:bg-gray-500',
-					disable ? 'opacity-60 text-gray-500 bg-gray-200/50' : '',
+					disable ? 'opacity-60 text-gray-600 bg-gray-200/50 dark:text-gray-200' : '',
 					className
 				)}
 				{...props}

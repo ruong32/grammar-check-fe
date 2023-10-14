@@ -34,6 +34,7 @@ const HomeView = () => {
 				key={mode}
 				onClick={() => {
 					setDisableCustomMode(true)
+					setCustomMode(`Paraphrase my text in ${mode} style`)
 					setCurrentMode(mode)
 				}}
 				className={cx(
@@ -101,7 +102,6 @@ const HomeView = () => {
 						words ?
 							words.map((word, wordIndex) => {
 								const synonymIndex = synonyms.findIndex(item => Object.keys(item)[0] === word)
-								console.log(synonymIndex, word, synonyms)
 								const changedWordIndex = changedWords.indexOf(word)
 								if (changedWordIndex > -1 ) {
 									changedWords.splice(changedWordIndex, 1)
