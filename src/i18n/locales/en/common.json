@@ -10,5 +10,7 @@
     "en-au": "English (AU)",
     "vi": "Vietnamese",
     "kr": "Korean",
-    "jp": "Japanese"
+    "jp": "Japanese",
+    "history": "History",
+    "noHistory": "No history"
 }

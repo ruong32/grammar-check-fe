@@ -13,7 +13,7 @@ export const i18n = (lang?: string, namespace: LangNS = 'common') => {
             return ''
         }
         if (!data[key]) {
-            return ''
+            return key
         }
         return data[key]
     }

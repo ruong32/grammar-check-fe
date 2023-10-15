@@ -12,5 +12,6 @@
     "shorten": "Shorten",
     "synonym": "Synonym",
     "inputPlaceholder": "Type or Paste (Ctrl+V) your content here",
-    "resultPlaceholder": "Result will be displayed here"
+    "resultPlaceholder": "Result will be displayed here",
+    "tryExample": "Try example"
 }

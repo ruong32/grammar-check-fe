@@ -10,5 +10,7 @@
     "en-au": "Anh Úc",
     "vi": "Việt Nam",
     "kr": "Hàn Quốc",
-    "jp": "Nhật Bản"
+    "jp": "Nhật Bản",
+    "history": "Lịch sử",
+    "noHistory": "Lịch sử trống"
 }

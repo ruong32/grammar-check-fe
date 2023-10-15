@@ -84,7 +84,7 @@ const AccentSelect = (props: AccentSelectProps) => {
 	return (
 		<div
 			className={cx(
-				"flex space-x-2 text-sm", props.className
+				"flex flex-wrap space-x-2 text-sm", props.className
 			)}
 		>
 			<Select.Root open={openEnglishSelect} onOpenChange={open => setOpenEnglishSelect(open)}>

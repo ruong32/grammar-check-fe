@@ -1,13 +1,13 @@
-import React, { forwardRef, useId, useMemo } from "react"
+import React, { ReactNode, forwardRef, useId, useMemo } from "react"
 import { cx } from "@/helper"
 import CopyButton from "./CopyButton"
 import ClearButton from "./ClearButton"
 
 type TextAreaProps = React.HTMLProps<HTMLDivElement> & {
-
+    extraElement?: ReactNode
 }
 
-const TextArea = forwardRef<HTMLDivElement, TextAreaProps>(({ className, id, ...props }, ref) => {
+const TextArea = forwardRef<HTMLDivElement, TextAreaProps>(({ className, id, extraElement, ...props }, ref) => {
     const textAreaId = useMemo(() => {
         return id || useId()
     }, [])
@@ -50,6 +50,9 @@ const TextArea = forwardRef<HTMLDivElement, TextAreaProps>(({ className, id, ...
                 <CopyButton targetId={textAreaId}/>
                 <ClearButton targetId={textAreaId}/>
             </div>
+            {
+                extraElement
+            }
         </div>
     )
 })
