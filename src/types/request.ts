@@ -4,10 +4,12 @@ export type GeneralRequest = {
 
 export type ParaphraseRequest = GeneralRequest & {
     mode: string,
-    synonym: number
+    synonym: number,
+    lang: string
 }
 
 export type CustomParaphraseRequest = GeneralRequest & {
     type_content: string,
-    synonym: number
+    synonym: number,
+    lang: string
 }

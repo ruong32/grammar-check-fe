@@ -1,1 +1,1 @@
-export const SUGGESTED_MODES = ["standard", "simple", "fluency", "creative", "formal", "casual", 'acadamic', 'expand', 'shorten' ] as const
+export const SUGGESTED_MODES = ["standard", "simple", "fluency", "creative", "formal", "casual", 'academic', 'expand', 'shorten' ] as const

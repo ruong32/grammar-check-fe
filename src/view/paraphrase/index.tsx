@@ -33,6 +33,7 @@ const HomeView = () => {
   const synonyms = useRef<SynonymData[]>([]);
   const [disableCustomMode, setDisableCustomMode] = useState<boolean>(false);
   const changedWords = useRef<string[]>([]);
+	const paraphraseLanguage = useRef<string>('US');
 
   const canUseCustomMode = () => !disableCustomMode && customMode.length > 0;
 
@@ -83,11 +84,13 @@ const HomeView = () => {
           data: input,
           type_content: customMode,
           synonym: synonym,
+					lang: paraphraseLanguage.current,
         })
       : paraphrase({
           data: input,
           mode: currentMode,
           synonym: synonym,
+					lang: paraphraseLanguage.current,
         }));
     if (paraphraseResult?.result) {
       changedWords.current = paraphraseResult.detail.map(([start, end]) =>
@@ -266,7 +269,7 @@ const HomeView = () => {
           </div>
         </div>
         <div className="mt-4 flex flex-col items-start md:flex-row md:justify-between">
-          <AccentSelect className="md:mr-4" />
+          <AccentSelect className="md:mr-4" onChange={lang => {paraphraseLanguage.current = lang.value}}/>
           <History onHistoryClick={onHistoryClick} />
         </div>
         <Resizable

@@ -38,7 +38,7 @@ const Zoom = (props: ZoomProps) => {
 		<div className={cx('relative text-[14px] leading-[20px]', props.className)}>
 			<div 
 				className={cx(
-					"flex items-center p-[8px] rounded-lg bg-slate-300 transition-[filter]",
+					"flex items-center p-[8px] rounded-lg bg-slate-300 transition-[filter] select-none",
 					"dark:bg-slate-700",
 					"hover:cursor-pointer hover:brightness-95"
 				)}
