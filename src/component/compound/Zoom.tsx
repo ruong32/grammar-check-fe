@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from "react"
+import { useEffect, useLayoutEffect, useState } from "react"
 import { cx } from "@/helper"
 import { Check, Zoom as ZoomIcon } from "../icon"
 import { useI18nClient } from "@/hook/useI18nClient"
@@ -17,8 +17,8 @@ const Zoom = (props: ZoomProps) => {
 	const [currentZoom, setCurrentZoom] = useState<typeof ZOOM_RATIO[number]>(1.5)
 	const [open, setOpen] = useState<boolean>(false)
 
-	useEffect(() => {
-		const storedRatio = parseFloat(localStorage.getItem(STORAGE_KEY.ZOOM_RATIO) || '0') || currentZoom
+	useLayoutEffect(() => {
+		const storedRatio = parseFloat(localStorage.getItem(STORAGE_KEY.ZOOM_RATIO) || '1.5')
 		if (ZOOM_RATIO.some(ratio => ratio === storedRatio)) {
 			setCurrentZoom(storedRatio as typeof ZOOM_RATIO[number]);
 		}

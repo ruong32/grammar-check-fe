@@ -73,16 +73,16 @@ const AccentSelect = (props: AccentSelectProps) => {
 	const [openEnglishSelect, setOpenEnglishSelect] = useState<boolean>(false)
 
 	useEffect(() => {
-		try {
-			const storedLanguage: Language = JSON.parse(localStorage.getItem(STORAGE_KEY.ACCENT_LANGUAGE) || '')
-			setSelectedLanguage(storedLanguage)
-			ENGLISH.forEach(accent => {
-				if (accent.code === storedLanguage.code) {
-					setSelectedEnglish(accent)
+		const storedLanguage = localStorage.getItem(STORAGE_KEY.ACCENT_LANGUAGE)
+		if (storedLanguage) {
+			LANGUAGES.concat(ENGLISH).forEach(accent => {
+				if (accent.code === storedLanguage) {
+					setSelectedLanguage(accent)
+					if (accent.code.startsWith('en')) {
+						setSelectedEnglish(accent)
+					}
 				}
 			})
-		} catch {
-			setSelectedLanguage(ENGLISH[0])
 		}
 	}, [])
 
@@ -92,7 +92,7 @@ const AccentSelect = (props: AccentSelectProps) => {
 
 	const selectLanguage = (language: Language) => {
 		setSelectedLanguage(language)
-		localStorage.setItem(STORAGE_KEY.ACCENT_LANGUAGE, JSON.stringify(language.code))
+		localStorage.setItem(STORAGE_KEY.ACCENT_LANGUAGE, language.code)
 	}
 
 	return (

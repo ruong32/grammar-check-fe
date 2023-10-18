@@ -26,6 +26,7 @@ const HomeView = () => {
   const [input, setInput] = useState<string>("");
   const [result, setResult] = useState<string>("");
   const [isProcessing, setIsProcessing] = useState<boolean>(false);
+	const [isLoading, setIsLoading] = useState<boolean>(true)
   const [synonym, setSynonym] = useState<number>(30);
   const [currentMode, setCurrentMode] =
     useState<(typeof SUGGESTED_MODES)[number]>("standard");
@@ -189,6 +190,12 @@ const HomeView = () => {
     root.render(sentenceElements);
   };
 
+	useEffect(() => {
+		setTimeout(() => {
+			setIsLoading(false)
+		}, 300)
+	}, [])
+
   useEffect(() => {
     const initRoot = (id: string) => {
       const rootElement = document.getElementById(id);
@@ -231,6 +238,11 @@ const HomeView = () => {
           </div>
         </div>
       )}
+			{isLoading && (
+				<div className="fixed top-0 left-0 h-full w-full flex items-center justify-center rounded-md z-20 bg-gray-100 dark:bg-gray-700">
+          <Spinner height="42" width="42" className="text-green-500"/>
+        </div>
+			)}
       <div
         className={cx(isProcessing ? "opacity-30 pointer-events-none" : null)}
       >
