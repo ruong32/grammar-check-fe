@@ -50,10 +50,10 @@ const History = (props: HistoryProps) => {
       </div>
       <div
         className={cx(
-          "absolute top-full left-0 mt-1 p-2 rounded-lg bg-slate-300 text-gray-950",
+          "absolute top-full right-0 mt-1 p-2 rounded-lg bg-slate-300 text-gray-950",
           "scrollbar w-[calc(100vw-2rem)] max-h-80 shadow-md",
           "transition-opacity duration-300",
-          "md:w-[28rem] md:right-0 md:left-auto",
+          "sm:w-[28rem]",
           "dark:bg-slate-700 dark:text-gray-50",
           open ? "opacity-100 visible" : "opacity-0 invisible"
         )}

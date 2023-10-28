@@ -6,6 +6,7 @@
   box-sizing: border-box;
   cursor: inherit;
   transition: background-color .2s, border-color .2s;
+  /* background: rgba(0, 255, 0, 0.05); */
 }
 
 .no-scrollbar::-webkit-scrollbar {

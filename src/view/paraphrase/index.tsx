@@ -12,7 +12,7 @@ import {
   Slider,
   TextArea,
 } from "@/component/atom";
-import { Document, Spinner } from "@/component/icon";
+import { Check, ChevronDown, Document, Spinner } from "@/component/icon";
 import { cx } from "@/helper";
 import { useI18nClient } from "@/hook/useI18nClient";
 import Sentence from "./Sentence";
@@ -20,13 +20,14 @@ import { HistoryItem, SynonymData } from "@/types";
 import Synonym from "./Synonym";
 import AccentSelect from "./AccentSelect";
 import History from "./History";
+import * as Select from "@radix-ui/react-select";
 
 const HomeView = () => {
   const [t] = useI18nClient("paraphrase");
   const [input, setInput] = useState<string>("");
   const [result, setResult] = useState<string>("");
   const [isProcessing, setIsProcessing] = useState<boolean>(false);
-	const [isLoading, setIsLoading] = useState<boolean>(true)
+  const [isLoading, setIsLoading] = useState<boolean>(true);
   const [synonym, setSynonym] = useState<number>(30);
   const [currentMode, setCurrentMode] =
     useState<(typeof SUGGESTED_MODES)[number]>("standard");
@@ -34,30 +35,78 @@ const HomeView = () => {
   const synonyms = useRef<SynonymData[]>([]);
   const [disableCustomMode, setDisableCustomMode] = useState<boolean>(false);
   const changedWords = useRef<string[]>([]);
-	const paraphraseLanguage = useRef<string>('US');
+  const paraphraseLanguage = useRef<string>("US");
 
   const canUseCustomMode = () => !disableCustomMode && customMode.length > 0;
 
   const renderModeSuggestion = () => {
     const selectedModeStyle = "font-semibold border-b-2 border-green-500";
-    return SUGGESTED_MODES.map((mode) => (
-      <span
-        key={mode}
-        onClick={() => {
-          setDisableCustomMode(true);
-          setCustomMode(`Paraphrase my text in ${mode} style`);
-          setCurrentMode(mode);
-        }}
-        className={cx(
-          !canUseCustomMode() && mode === currentMode
-            ? selectedModeStyle
-            : null,
-          "cursor-pointer"
-        )}
-      >
-        {t(mode)}
-      </span>
-    ));
+    return (
+      <>
+        <div className="hidden flex-wrap [&>span]:mx-2 [&>span]:mb-2 sm:flex">
+          {SUGGESTED_MODES.map((mode) => (
+            <span
+              key={mode}
+              onClick={() => {
+                setDisableCustomMode(true);
+                setCustomMode(`Paraphrase my text in ${mode} style`);
+                setCurrentMode(mode);
+              }}
+              className={cx(
+                !canUseCustomMode() && mode === currentMode
+                  ? selectedModeStyle
+                  : null,
+                "cursor-pointer"
+              )}
+            >
+              {t(mode)}
+            </span>
+          ))}
+        </div>
+        <div className="flex items-center text-sm sm:hidden">
+          <div className="mr-2">Mode:</div>
+          <Select.Root>
+            <Select.Trigger asChild>
+              <div
+                className={cx(
+                  "flex items-center px-1 py-2 rounded-md cursor-pointer hover:bg-green-500/20"
+                )}
+              >
+                {t(currentMode)}
+                <ChevronDown className="ml-2" height={20} width={20} />
+              </div>
+            </Select.Trigger>
+            <Select.Portal>
+              <Select.Content
+                className="py-1 space-y-1 w-full rounded-md text-sm bg-gray-50 shadow-md z-10 dark:bg-gray-700"
+                position="popper"
+              >
+                {SUGGESTED_MODES.map((mode) => (
+                  <div
+                    key={mode}
+                    onClick={() => {
+                      setDisableCustomMode(true);
+                      setCustomMode(`Paraphrase my text in ${mode} style`);
+                      setCurrentMode(mode);
+                    }}
+                    className="px-2 py-1 flex items-center cursor-pointer outline-none hover:bg-gray-200/50 hover:dark:bg-gray-600"
+                  >
+                    <div>{t(mode)}</div>
+                    {mode === currentMode && (
+                      <Check
+                        height={20}
+                        width={20}
+                        className="ml-2 text-green-500"
+                      />
+                    )}
+                  </div>
+                ))}
+              </Select.Content>
+            </Select.Portal>
+          </Select.Root>
+        </div>
+      </>
+    );
   };
 
   const saveHistory = (item: HistoryItem) => {
@@ -85,13 +134,13 @@ const HomeView = () => {
           data: input,
           type_content: customMode,
           synonym: synonym,
-					lang: paraphraseLanguage.current,
+          lang: paraphraseLanguage.current,
         })
       : paraphrase({
           data: input,
           mode: currentMode,
           synonym: synonym,
-					lang: paraphraseLanguage.current,
+          lang: paraphraseLanguage.current,
         }));
     if (paraphraseResult?.result) {
       changedWords.current = paraphraseResult.detail.map(([start, end]) =>
@@ -190,11 +239,11 @@ const HomeView = () => {
     root.render(sentenceElements);
   };
 
-	useEffect(() => {
-		setTimeout(() => {
-			setIsLoading(false)
-		}, 300)
-	}, [])
+  useEffect(() => {
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 300);
+  }, []);
 
   useEffect(() => {
     const initRoot = (id: string) => {
@@ -220,13 +269,16 @@ const HomeView = () => {
     };
   }, [result]);
 
-	const onTryExample = () => {
-		const input = document.getElementById("paraphrase-input-field")
-		if (input) {
-			input.textContent = "A paragraph is a series of sentences that are organized and coherent, and are all related to a single topic. Almost every piece of writing you do that is longer than a few sentences should be organized into paragraphs."
-			setInput("A paragraph is a series of sentences that are organized and coherent, and are all related to a single topic. Almost every piece of writing you do that is longer than a few sentences should be organized into paragraphs.")
-		}
-	}
+  const onTryExample = () => {
+    const input = document.getElementById("paraphrase-input-field");
+    if (input) {
+      input.textContent =
+        "A paragraph is a series of sentences that are organized and coherent, and are all related to a single topic. Almost every piece of writing you do that is longer than a few sentences should be organized into paragraphs.";
+      setInput(
+        "A paragraph is a series of sentences that are organized and coherent, and are all related to a single topic. Almost every piece of writing you do that is longer than a few sentences should be organized into paragraphs."
+      );
+    }
+  };
 
   return (
     <Container className="relative">
@@ -238,11 +290,11 @@ const HomeView = () => {
           </div>
         </div>
       )}
-			{isLoading && (
-				<div className="fixed top-0 left-0 h-full w-full flex items-center justify-center rounded-md z-20 bg-gray-100 dark:bg-gray-700">
-          <Spinner height="42" width="42" className="text-green-500"/>
+      {isLoading && (
+        <div className="fixed top-0 left-0 h-full w-full flex items-center justify-center rounded-md z-50 bg-gray-100 dark:bg-gray-700">
+          <Spinner height="42" width="42" className="text-green-500" />
         </div>
-			)}
+      )}
       <div
         className={cx(isProcessing ? "opacity-30 pointer-events-none" : null)}
       >
@@ -265,14 +317,13 @@ const HomeView = () => {
             {t("paraphrase")}
           </Button>
         </div>
-        <div className="mt-3 flex justify-between items-start flex-wrap">
-          <div className="flex flex-wrap [&>span]:mx-2 [&>span]:mb-2">
-            {renderModeSuggestion()}
-          </div>
-          <div className="flex items-center gap-3">
-            <p>{t("synonym")}</p>
+        <div className="mt-3 flex justify-between items-center flex-wrap">
+          {renderModeSuggestion()}
+          <div className="flex items-center text-sm">
+            <p className="mr-2">{t("synonym")}</p>
             <Slider
               value={[synonym]}
+              className="w-[5rem] sm:w-[8rem]"
               onValueChange={(value) => {
                 const newSynonym = value[0] < 30 ? 30 : value[0];
                 setSynonym(newSynonym);
@@ -280,8 +331,13 @@ const HomeView = () => {
             />
           </div>
         </div>
-        <div className="mt-4 flex flex-col items-start md:flex-row md:justify-between">
-          <AccentSelect className="md:mr-4" onChange={lang => {paraphraseLanguage.current = lang.value}}/>
+        <div className="mt-4 flex justify-between">
+          <AccentSelect
+            className="md:mr-4"
+            onChange={(lang) => {
+              paraphraseLanguage.current = lang.value;
+            }}
+          />
           <History onHistoryClick={onHistoryClick} />
         </div>
         <Resizable
@@ -289,7 +345,7 @@ const HomeView = () => {
           left={
             <TextArea
               id="paraphrase-input-field"
-              className="min-h-[50vh] p-2 rounded-lg text-sm"
+              className="pb-11"
               placeholder={t("inputPlaceholder")}
               onInput={(e) => {
                 setInput(e.currentTarget.innerText);
@@ -303,7 +359,7 @@ const HomeView = () => {
                       "hover:bg-green-500 hover:text-gray-50",
                       "dark:bg-slate-700 dark:hover:bg-green-500"
                     )}
-										onClick={onTryExample}
+                    onClick={onTryExample}
                   >
                     <Document className="mr-1" />
                     {t("tryExample")}
@@ -316,7 +372,7 @@ const HomeView = () => {
             <TextArea
               id="paraphrase-result-field"
               placeholder={t("resultPlaceholder")}
-              className="min-h-[50vh] p-2 rounded-lg text-sm"
+              className="pb-11"
             />
           }
         />

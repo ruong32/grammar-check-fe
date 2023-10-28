@@ -31,7 +31,7 @@ const Header = () => {
     return (
         <div
             className={cx(
-                'fixed top-0 w-full mx-auto bg-slate-100 z-10',
+                'fixed top-0 w-full mx-auto bg-slate-100 z-50',
                 'dark:bg-gray-900'
             )}
         >

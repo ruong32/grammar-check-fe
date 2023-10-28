@@ -46,7 +46,7 @@ const TextArea = forwardRef<HTMLDivElement, TextAreaProps>(({ className, id, ext
                 }}
                 contentEditable
             />
-            <div className="toolbox absolute hidden top-full left-1 pt-1 space-x-1">
+            <div className="toolbox absolute hidden bottom-1 right-1 space-x-1">
                 <CopyButton targetId={textAreaId}/>
                 <ClearButton targetId={textAreaId}/>
             </div>
