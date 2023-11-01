@@ -9,9 +9,10 @@ type SliderProps = PrimitiveSlider.SliderProps & {
 	trackClassName?: string
 	rangeClassName?: string
 	thumbClassName?: string
+	thumbTitle?: string
 }
 
-const Slider = ({className, hideThumb, trackClassName, rangeClassName, thumbClassName, ...props}: SliderProps) => {
+const Slider = ({className, hideThumb, trackClassName, rangeClassName, thumbClassName, thumbTitle, ...props}: SliderProps) => {
 	return (
 		<PrimitiveSlider.Root
 			className={cx(
@@ -36,7 +37,8 @@ const Slider = ({className, hideThumb, trackClassName, rangeClassName, thumbClas
 			</PrimitiveSlider.Track>
 			{
 				!hideThumb &&
-				<PrimitiveSlider.Thumb 
+				<PrimitiveSlider.Thumb
+					title={thumbTitle}
 					className={cx(
 						'block h-[1.25rem] w-[1.25rem] bg-white border-1 rounded-full shadow-[0_0_0.1875rem_#00000060]',
 						'dark:bg-gray-200',

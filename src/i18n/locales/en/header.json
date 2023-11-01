@@ -1,4 +1,8 @@
 {
     "paraphrase": "Paraphrase",
-    "analyzer": "Analyzer"
+    "analyzer": "Analyzer",
+    "settings": "Settings",
+    "language": "Language",
+    "theme": "Theme",
+    "zoom": "Zoom"
 }

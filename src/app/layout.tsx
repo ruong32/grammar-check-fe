@@ -2,12 +2,10 @@ import './globals.css'
 import React from 'react'
 import { Inter } from 'next/font/google'
 import { Metadata } from 'next'
-import { Header, Zoom } from '@/component/compound'
+import { Header } from '@/component/compound'
 import { cx } from '@/helper'
 import { cookies } from 'next/headers'
 import { DEFAULT_LANG, LANG_COOKIE_NAME } from '@/common'
-import Head from 'next/head'
-import Script from 'next/script'
 
 
 const inter = Inter({ subsets: ['latin'] })
@@ -44,7 +42,6 @@ export default function RootLayout({ children }: RootLayoutProps) {
         <main className='pt-[4.625rem]'>
           {children}
         </main>
-        <Zoom className='fixed right-[16px] bottom-[16px]'/>
       </body>
     </html>
   )

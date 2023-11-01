@@ -36,7 +36,7 @@ const ThemeChanger = ({ className }: ThemeChangerProps) => {
     return (
         <Tooltip
             className={cx(
-                "p-1 rounded-full border border-gray-800 cursor-pointer text-gray-800",
+                "p-1 w-fit rounded-full border border-gray-800 cursor-pointer text-gray-800",
                 "dark:border-gray-100 dark:text-gray-100",
                 className
             )}

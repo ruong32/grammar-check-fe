@@ -10,6 +10,7 @@ export const useScreenSize = () => {
       setWidth(document.body.clientWidth);
       setHeight(document.body.clientHeight);
     }, 10);
+		onResize()
     window.addEventListener("resize", onResize, true);
     return () => {
       window.removeEventListener("resize", onResize);
