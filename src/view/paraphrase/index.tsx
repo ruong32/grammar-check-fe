@@ -197,7 +197,7 @@ const HomeView = () => {
     }
     const sentences = paragraph.match(/[^\.!\?]+[\.!\?]+|[^\.!\?]+/g);
     const sentenceElements = sentences?.map((sentence, index) => {
-      const words = sentence.match(/\w+|\s+|[^\s\w]+/g);
+      const words = sentence.match(/\s+|[^\s]+/g);
       return (
         <Sentence key={index} type={type} order={index}>
           {words
@@ -224,7 +224,7 @@ const HomeView = () => {
                     key={`${word}-${index}-${wordIndex}`}
                     className={cx(
                       changedWordIndex > -1
-                        ? "text-yellow-600 dark:bg-yellow-500"
+                        ? "text-yellow-600 dark:text-yellow-500"
                         : ""
                     )}
                   >
