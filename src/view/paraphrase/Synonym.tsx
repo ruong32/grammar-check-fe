@@ -22,7 +22,7 @@ const Synonym = ({ synonym, isChangedWord }: SynonymProps) => {
 	}
 
 	if (synonymOptions.length === 0) {
-		return <span>{label}</span>
+		return <span className={cx(isChangedWord ? 'text-yellow-600 dark:text-yellow-500' : '')}>{label}</span>
 	}
 
 	return (
