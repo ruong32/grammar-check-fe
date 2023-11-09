@@ -40,7 +40,7 @@ const HomeView = () => {
   const canUseCustomMode = () => !disableCustomMode && customMode.length > 0;
 
   const renderModeSuggestion = () => {
-    const selectedModeStyle = "font-semibold border-b-2 border-green-500";
+    const selectedModeStyle = "font-semibold border-b-2 border-indigo-600";
     return (
       <>
         <div className="hidden flex-wrap [&>span]:mx-2 [&>span]:mb-2 sm:flex">
@@ -69,7 +69,7 @@ const HomeView = () => {
             <Select.Trigger asChild>
               <div
                 className={cx(
-                  "flex items-center px-1 py-2 rounded-md cursor-pointer hover:bg-green-500/20"
+                  "flex items-center px-1 py-2 rounded-md cursor-pointer hover:bg-indigo-600/20"
                 )}
               >
                 {t(currentMode)}
@@ -96,7 +96,7 @@ const HomeView = () => {
                       <Check
                         height={20}
                         width={20}
-                        className="ml-2 text-green-500"
+                        className="ml-2 text-indigo-600"
                       />
                     )}
                   </div>
@@ -285,14 +285,14 @@ const HomeView = () => {
       {isProcessing && (
         <div className="absolute top-0 left-0 h-full w-full flex items-center justify-center text-gray-700 z-10 dark:text-gray-50">
           <div className="flex items-center bg-[#ffffff] px-4 py-2 rounded-lg dark:bg-gray-600">
-            <Spinner className="text-green-500 mr-2" /> Processing, please
+            <Spinner className="text-indigo-600 mr-2" /> Processing, please
             wait...
           </div>
         </div>
       )}
       {isLoading && (
         <div className="fixed top-0 left-0 h-full w-full flex items-center justify-center rounded-md z-50 bg-gray-100 dark:bg-gray-700">
-          <Spinner height="42" width="42" className="text-green-500" />
+          <Spinner height="42" width="42" className="text-indigo-600" />
         </div>
       )}
       <div
@@ -311,7 +311,7 @@ const HomeView = () => {
           />
           <Button
             className="rounded-l-none text-white"
-            color="green"
+            color='indigo'
             onClick={submit}
           >
             {t("paraphrase")}
@@ -356,8 +356,8 @@ const HomeView = () => {
                     className={cx(
                       "absolute py-1 px-2 w-fit top-1/3 inset-x-0 mx-auto cursor-pointer",
                       "bg-slate-300 rounded-lg text-sm flex items-center",
-                      "hover:bg-green-500 hover:text-gray-50",
-                      "dark:bg-slate-700 dark:hover:bg-green-500"
+                      "hover:bg-indigo-600 hover:text-gray-50",
+                      "dark:bg-slate-700 dark:hover:bg-indigo-600"
                     )}
                     onClick={onTryExample}
                   >

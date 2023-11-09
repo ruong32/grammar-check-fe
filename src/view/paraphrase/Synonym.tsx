@@ -53,7 +53,7 @@ const Synonym = ({ synonym, isChangedWord }: SynonymProps) => {
 										key={option}
 										className={cx(
 											"px-2 bg-transparent cursor-pointer min-w-[5rem]",
-											"hover:bg-green-300 dark:hover:bg-green-500"
+											"hover:bg-indigo-300 dark:hover:bg-indigo-600"
 										)}
 										onClick={() => {
 											onSynonymOptionClick(option)

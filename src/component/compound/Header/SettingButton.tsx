@@ -53,7 +53,7 @@ const MenuButton = () => {
                     )}
                     onClick={e => e.stopPropagation()}
                 >
-                    <div className="flex items-center px-4 py-3 cursor-default border-b border-gray-300 dark:border-gray-700">
+                    <div className="flex items-center px-4 py-2.5 cursor-default border-b border-gray-300 dark:border-gray-700">
                         <div className="text-xl font-bold">{t('settings')}</div>
                     </div>
                     <div className="grid grid-cols-[max-content_1fr] items-center gap-y-3 gap-x-4 mt-3 px-4 text-sm">

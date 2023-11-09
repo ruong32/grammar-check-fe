@@ -14,7 +14,7 @@ type ZoomProps = {
 };
 
 const ZOOM_RATIO = [1, 1.25, 1.5] as const;
-const DEFAULT_ZOOM = 1.25;
+const DEFAULT_ZOOM = 1.35;
 
 const Zoom = ({ type = "select", ...props }: ZoomProps) => {
   const [t] = useI18nClient();
@@ -58,7 +58,7 @@ const Zoom = ({ type = "select", ...props }: ZoomProps) => {
   };
 
 	if (!enable) {
-		return 'Not avaiable on screen width smaller than 876 pixels'
+		return t('notSupportZoom')
 	}
 
   if (type === "slider") {

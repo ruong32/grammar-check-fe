@@ -41,8 +41,8 @@ const History = (props: HistoryProps) => {
       <div
         className={cx(
           "p-2 rounded-lg bg-slate-300 cursor-pointer select-none",
-          "hover:bg-green-500 hover:text-gray-50",
-          "dark:bg-slate-700 dark:hover:bg-green-500 dark:hover:text-gray-50"
+          "hover:bg-indigo-600 hover:text-gray-50",
+          "dark:bg-slate-700 dark:hover:bg-indigo-600 dark:hover:text-gray-50"
         )}
         onClick={() => setOpen(!open)}
       >
@@ -74,7 +74,7 @@ const History = (props: HistoryProps) => {
                 {item.input}
               </div>
               <div className="mt-1 text-sm line-clamp-2">
-                <RightDownCurveArrow className="inline text-green-600"/>{" "}
+                <RightDownCurveArrow className="inline text-indigo-500"/>{" "}
                 {item.result}
               </div>
               <div className="flex justify-end mt-2 text-xs text-gray-500 dark:text-gray-400">

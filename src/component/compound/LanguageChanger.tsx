@@ -19,7 +19,7 @@ const LanguageChanger = ({ className }: LanguageChangerProps) => {
     }
 
     const itemStyle = ['py-1 px-2 cursor-pointer rounded [&~*]:ml-2']
-    const currentLangStyle = 'bg-green-500 text-gray-50 cursor-default'
+    const currentLangStyle = 'bg-indigo-600 text-gray-50 cursor-default'
 
     return (
         <div className={cx('flex text-sm', className)}>

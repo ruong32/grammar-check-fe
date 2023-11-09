@@ -3,8 +3,8 @@ import { Check, ChevronDown } from "../icon";
 import { cx } from "@/helper";
 import { ReactNode } from "react";
 
-const itemStyle = "px-2 py-2 rounded-md cursor-pointer hover:bg-green-500/20";
-const activeItemStyle = "bg-green-500 text-gray-50 hover:bg-green-500";
+const itemStyle = "px-2 py-2 rounded-md cursor-pointer hover:bg-indigo-600/20";
+const activeItemStyle = "bg-indigo-600 text-gray-50 hover:bg-indigo-600";
 
 type SelectProps = {
     open?: boolean
@@ -49,7 +49,7 @@ const Select = (props: SelectProps) => {
             >
               <div>{accent.label}</div>
               {accent.code === selectedLanguage.code && (
-                <Check height={20} width={20} className="ml-2 text-green-500" />
+                <Check height={20} width={20} className="ml-2 text-indigo-600" />
               )}
             </div>
           ))} */}

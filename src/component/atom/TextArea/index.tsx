@@ -19,7 +19,7 @@ const TextArea = forwardRef<HTMLDivElement, TextAreaProps>(({ className, id, ext
                 className={cx(
                     'scrollbar bg-white overflow-y-auto resize-y whitespace-pre-line w-full p-2 rounded-lg text-sm outline-transparent transition-[outline] duration-[250ms]',
 				    'dark:bg-gray-500',
-                    'focus:outline-green-500',
+                    'focus:outline-indigo-600',
                     className
                 )} 
                 {...props}

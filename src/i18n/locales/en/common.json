@@ -12,5 +12,6 @@
     "kr": "Korean",
     "jp": "Japanese",
     "history": "History",
-    "noHistory": "No history"
+    "noHistory": "No history",
+    "notSupportZoom": "Not avaiable on screen width smaller than 876 pixels"
 }

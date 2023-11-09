@@ -12,5 +12,6 @@
     "kr": "Hàn Quốc",
     "jp": "Nhật Bản",
     "history": "Lịch sử",
-    "noHistory": "Lịch sử trống"
+    "noHistory": "Lịch sử trống",
+    "notSupportZoom": "Không hỗ trợ màn hình nhỏ hơn 876 pixel"
 }

@@ -23,13 +23,13 @@ const Header = () => {
     return (
         <div
             className={cx(
-                'fixed top-0 w-full mx-auto bg-slate-100 z-50',
+                'fixed top-0 w-full mx-auto bg-white z-50',
                 'dark:bg-gray-900'
             )}
         >
             <Container
                 className={cx(
-                    'py-4 flex items-center justify-between'
+                    'py-2.5 flex items-center justify-between'
                 )}
             >
                 <div className="text-lg font-bold">Grammar Check <span className="text-xs font-normal">beta</span></div>

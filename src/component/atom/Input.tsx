@@ -12,7 +12,7 @@ const Input = ({ containerClassName, className, leftIcon, rightIcon, disable, ..
 		<label
 			className={cx(
 				'bg-white rounded-lg overflow-hidden flex gap-2 outline outline-1 outline-offset-[-1px] outline-transparent transition-all',
-				'focus-within:outline-green-500',
+				'focus-within:outline-indigo-600',
 				'dark:bg-gray-500',
 				containerClassName
 			)}

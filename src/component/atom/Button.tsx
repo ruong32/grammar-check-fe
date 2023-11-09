@@ -18,6 +18,7 @@ const buttonVariants = cva(
                 red: '[--button-color:--color-red-600]',
                 green: '[--button-color:--color-green-600]',
                 gray: '[--button-color:--color-gray-500]',
+                indigo: '[--button-color:--color-indigo-600]',
             },
             align: {
                 left: 'justify-start',

@@ -30,7 +30,7 @@ const Slider = ({className, hideThumb, trackClassName, rangeClassName, thumbClas
 			>
 				<PrimitiveSlider.Range 
 					className={cx(
-						'absolute bg-green-500 rounded-full h-full',
+						'absolute bg-indigo-600 rounded-full h-full',
 						rangeClassName
 					)}
 				/>

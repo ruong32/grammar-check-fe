@@ -22,8 +22,8 @@ type AccentSelectProps = {
 
 const flagStyle = "h-5 w-5 rounded-full mr-2";
 
-const itemStyle = "px-2 py-2 rounded-md cursor-pointer hover:bg-green-500/20";
-const activeItemStyle = "bg-green-500 text-gray-50 hover:bg-green-500";
+const itemStyle = "px-2 py-2 rounded-md cursor-pointer hover:bg-indigo-600/20";
+const activeItemStyle = "bg-indigo-600 text-gray-50 hover:bg-indigo-600";
 
 const AccentSelect = (props: AccentSelectProps) => {
   const [t] = useI18nClient();
@@ -183,7 +183,7 @@ const AccentSelect = (props: AccentSelectProps) => {
                     <Check
                       height={20}
                       width={20}
-                      className="ml-2 text-green-500"
+                      className="ml-2 text-indigo-600"
                     />
                   )}
                 </div>
@@ -203,7 +203,7 @@ const AccentSelect = (props: AccentSelectProps) => {
                     <Check
                       height={20}
                       width={20}
-                      className="ml-2 text-green-500"
+                      className="ml-2 text-indigo-600"
                     />
                   )}
                 </div>
@@ -253,7 +253,7 @@ const AccentSelect = (props: AccentSelectProps) => {
                       <Check
                         height={20}
                         width={20}
-                        className="ml-2 text-green-500"
+                        className="ml-2 text-indigo-600"
                       />
                     )}
                   </div>
